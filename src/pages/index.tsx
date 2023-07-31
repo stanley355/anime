@@ -1,12 +1,13 @@
 import Head from 'next/head'
 import { Inter } from 'next/font/google';
+import classNames from 'classnames';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { css } from '@emotion/css';
 import Navbar from '@/components/Navbar';
 import Home from './home';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import { aniListClient, fetchAniList } from '@/lib/fetchAniList';
-import { ANIME_PAGE_QUERIES, HOME_PAGE_QUERIES } from '@/lib/graphqlQueries';
+import { HOME_PAGE_QUERIES } from '@/lib/graphqlQueries';
 import AnimePage from './anime/[id]';
 import { ApolloProvider } from '@apollo/client';
 
@@ -26,14 +27,14 @@ const Index = (props: any) => {
       <BrowserRouter>
         <Navbar />
         <ApolloProvider client={aniListClient}>
-          <div className={inter.className}>
+          <div className={classNames(inter.className, css`background: url("anime_sky.jpg"); background-repeat: no-repeat; background-size: cover; padding: 1rem 0;`)}>
             <Routes>
               <Route path="/anime/:id" element={<AnimePage />} />
               <Route path="/" element={<Home homeMediaData={homeMediaData} page={page} />} />
             </Routes>
           </div>
         </ApolloProvider>
-        <div className={css`border-top: 1px solid white; display: flex; justify-content: center; padding: 1rem 0; margin-top: 1rem;`}>
+        <div className={css`border-top: 1px solid white; display: flex; justify-content: center; padding: 1rem 0;`}>
           Copyright {new Date().getFullYear()} @NextAnime
         </div>
       </BrowserRouter>
