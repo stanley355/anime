@@ -6,6 +6,7 @@ import PikaIsSad from '@/components/PikaIsSad';
 import { Link } from 'react-router-dom';
 import { FaEye, FaPen, FaTrash } from 'react-icons/fa';
 import RenameCollectionBtn from '@/components/RenameCollectionBtn';
+import RemoveCollectionBtn from '@/components/RemoveCollectionBtn';
 
 const MyCollection = () => {
   const collectionStorage = localStorage.getItem("collections");
@@ -70,10 +71,7 @@ const MyCollection = () => {
                 <span>View</span>
               </Link>
               <RenameCollectionBtn collection={col}  index={index} onCollectionChange={setCollections} />
-              <button type="button">
-                <FaTrash />
-                <span>Dump</span>
-              </button>
+              <RemoveCollectionBtn collection={col}  index={index} onCollectionChange={setCollections} />
             </div>
           </div>
           )}
