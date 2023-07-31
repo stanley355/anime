@@ -1,10 +1,9 @@
 import Head from 'next/head'
 import { Inter } from 'next/font/google';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { css } from '@emotion/css';
 import Navbar from '@/components/Navbar';
 import Home from './home';
-import classNames from 'classnames';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import { fetchAniList } from '@/lib/fetchAniList';
 import { HOME_PAGE_QUERIES } from '@/lib/graphqlQueries';
@@ -24,16 +23,10 @@ const Index = (props: any) => {
       </Head>
       <BrowserRouter>
         <Navbar />
-        <div className={
-          classNames(inter.className, css`
-            @media (min-width: 1024px) { 
-              max-width: 1024px;
-              margin: auto
-            }`
-          )} >
+        <div className={inter.className}>
           <Routes>
             <Route path="/anime/:id" element={<h1>About</h1>} />
-            <Route path="/" element={<Home homeMediaData={homeMediaData} page={page}/>} />
+            <Route path="/" element={<Home homeMediaData={homeMediaData} page={page} />} />
           </Routes>
         </div>
         <div className={css`border-top: 1px solid white; display: flex; justify-content: center; padding: 1rem 0; margin-top: 1rem;`}>
@@ -46,7 +39,7 @@ const Index = (props: any) => {
 
 export default Index;
 export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  const {query} = ctx;
+  const { query } = ctx;
   const variables = {
     page: query?.page ? query.page : 1
   }
