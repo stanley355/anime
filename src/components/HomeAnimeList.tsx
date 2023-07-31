@@ -27,7 +27,9 @@ const HomeAnimeList = (props: IHomeAnimeList) => {
           border-radius: 0.5rem; 
           padding: 0.5rem; 
           margin-bottom: 1rem;
-          background: linear-gradient(to bottom, #57c1eb 0%,#246fa8 100%);
+          background: linear-gradient(rgba(0,0,0, .3), rgba(0,0,0,.3)), url("anime_sky.jpg");
+          background-repeat: no-repeat;
+          background-size: cover;
           @media (min-width: 1024px) { 
             display:flex; 
             align-items:center;

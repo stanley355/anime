@@ -27,7 +27,7 @@ const Index = (props: any) => {
       <BrowserRouter>
         <Navbar />
         <ApolloProvider client={aniListClient}>
-          <div className={classNames(inter.className, css`background: url("anime_sky.jpg"); background-repeat: no-repeat; background-size: cover; padding: 1rem 0;`)}>
+          <div className={classNames(inter.className, css`background: url("anime_sky.jpg"); background-repeat: no-repeat; background-size: cover; padding: 0;`)}>
             <Routes>
               <Route path="/anime/:id" element={<AnimePage />} />
               <Route path="/" element={<Home homeMediaData={homeMediaData} page={page} />} />
