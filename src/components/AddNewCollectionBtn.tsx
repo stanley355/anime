@@ -48,7 +48,7 @@ const AddNewCollectionBtn = (props: IAddNewCollectionBtn) => {
       return;
     }
 
-    let newCollection: Array<any> = JSON.parse(String(oldCollection));
+    let newCollection: Array<any> = oldCollection;
     newCollection.push(collection);
     localStorage.setItem("collections", JSON.stringify(newCollection));
     onCollectionChange(newCollection);
