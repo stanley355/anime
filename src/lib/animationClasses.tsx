@@ -8,4 +8,4 @@ const animateToVisibleKeyframes = css`@keyframes animateToVisible {
     opacity: 1;
   }
 }`;
-export const animateToVisible = css`animation: animateToVisible 2s linear; ${animateToVisibleKeyframes}`
+export const animateToVisible = css`animation: animateToVisible 2s linear; ${animateToVisibleKeyframes}`;
