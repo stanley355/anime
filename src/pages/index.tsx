@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { css } from '@emotion/css';
 import Navbar from '@/components/Navbar';
+import Home from './home';
+import classNames from 'classnames';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,10 +19,18 @@ const Index = () => {
       </Head>
       <BrowserRouter>
         <Navbar />
-        <Routes>
-          <Route path="/about" element={<h1>About</h1>} />
-          <Route path="/" element={<h1>Home</h1>} />
-        </Routes>
+        <div className={
+          classNames(inter.className, css`
+            @media (min-width: 1024px) { 
+              max-width: 1024px;
+              margin: auto
+            }`
+          )} >
+          <Routes>
+            <Route path="/about" element={<h1>About</h1>} />
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </>
   )

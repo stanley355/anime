@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   return (
     <div className={css`display:flex; align-items:center; justify-content: space-between; padding: 1rem; border-bottom: 1px solid white;`}>
-      <Link to="/" className={css`font-size: 1.5rem`}>NextAnime</Link>
+      <Link to="/" className={css`font-size: 1.5rem;`}>
+        <strong>N</strong>extAnime
+      </Link>
       <Link to="/collection">My Collection</Link>
     </div>
   )
