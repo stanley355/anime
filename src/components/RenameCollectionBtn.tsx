@@ -95,7 +95,7 @@ const RenameCollectionBtn = (props: IRenameCollectionBtn) => {
             </span>
             Collection
           </div>
-          <div className={css`text-align:center;`}>What's the new Collection Name</div>
+          <div className={css`text-align:center;`}>What&apos;s the new Collection Name</div>
           <form onSubmit={handleSubmit}>
             <label htmlFor="name">
               <input type="text" id='name' placeholder='Glorious Purpose' className={css`width: 100%; padding:0.5rem; font-size: 18px; border-radius: 0.25rem;`} />
@@ -108,7 +108,7 @@ const RenameCollectionBtn = (props: IRenameCollectionBtn) => {
               type="button"
               onClick={() => setShowModal(false)}
               className={css`text-align: center; cursor:pointer; padding: 0.5rem; margin-top: 1rem; background: none; width: 100%; font-size:16px; border:none;`}>
-              I'll change later
+              I&apos;ll change later
             </button>
           </form>
         </div>

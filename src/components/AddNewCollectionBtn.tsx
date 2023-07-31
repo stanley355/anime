@@ -102,18 +102,20 @@ const AddNewCollectionBtn = (props: IAddNewCollectionBtn) => {
             }
           `}>
           <div className={css`text-align:center; font-size: 28px; font-weight: bold; margin-bottom: 2rem;`}>Add New Collection</div>
-          <div className={css`text-align:center;`}>What's your Collection Name</div>
+          <div className={css`text-align:center;`}>What&apos;s your Collection Name</div>
           <form onSubmit={handleSubmit}>
             <label htmlFor="name">
               <input type="text" id='name' placeholder='Glorious Purpose' className={css`width: 100%; padding:0.5rem; font-size: 18px; border-radius: 0.25rem;`} />
             </label>
             <div className={css`color:red;`}>{formError}</div>
-            <button type="submit" className={css`width:100%; cursor: pointer; padding: 0.5rem; margin-top: 1rem; background: linear-gradient(to bottom, #90dffe 0%,#38a3d1 100%); border-radius: 0.25rem; font-size: 18px; font-weight: bold;`}>Let's Go</button>
+            <button type="submit" className={css`width:100%; cursor: pointer; padding: 0.5rem; margin-top: 1rem; background: linear-gradient(to bottom, #90dffe 0%,#38a3d1 100%); border-radius: 0.25rem; font-size: 18px; font-weight: bold;`}>
+              Let&apos;s Go
+              </button>
             <button
               type="button"
               onClick={() => setShowModal(false)}
               className={css`text-align: center; cursor:pointer; padding: 0.5rem; margin-top: 1rem; background: none; width: 100%; font-size:16px; border:none;`}>
-              I'll add later
+              I&apos;ll add later
             </button>
           </form>
         </div>

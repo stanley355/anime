@@ -26,7 +26,7 @@ const MyCollection = () => {
       }
     `}>
       <h1 className={css`text-align: center; font-weight: 400;`}>My Collections</h1>
-      <h3 className={css`text-align: center; font-weight: 400;`}>What's on My List?</h3>
+      <h3 className={css`text-align: center; font-weight: 400;`}>What&apos;s on My List?</h3>
       <AddNewCollectionBtn onCollectionChange={setCollections} />
       {collections.length === 0 && <PikaIsSad />}
       <div className={css`
