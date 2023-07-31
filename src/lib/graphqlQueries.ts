@@ -40,13 +40,8 @@ export const ANIME_PAGE_QUERIES = `
       duration
       genres
       countryOfOrigin
-      sort: trending
+      description
       startDate {
-        year
-        month
-        day
-      }
-      endDate {
         year
         month
         day
@@ -58,6 +53,7 @@ export const ANIME_PAGE_QUERIES = `
       coverImage {
         extraLarge
         large
+        color
       }
     }
   }
