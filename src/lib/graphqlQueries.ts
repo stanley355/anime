@@ -30,3 +30,35 @@ export const HOME_PAGE_QUERIES = `
     }
   }
 `;
+
+export const ANIME_PAGE_QUERIES = `
+  query GetAnimePageData($id: Int) {
+    Media(id: $id) {
+      id
+      bannerImage
+      episodes
+      duration
+      genres
+      countryOfOrigin
+      sort: trending
+      startDate {
+        year
+        month
+        day
+      }
+      endDate {
+        year
+        month
+        day
+      }
+      title {
+        native
+        userPreferred
+      }
+      coverImage {
+        extraLarge
+        large
+      }
+    }
+  }
+`;
