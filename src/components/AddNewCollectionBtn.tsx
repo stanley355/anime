@@ -3,7 +3,12 @@ import { css } from '@emotion/css';
 import { FaPlusCircle } from 'react-icons/fa';
 import { COLLECTIONS_STATES, collectionsReducer } from '@/lib/collectionsRedux';
 
-const AddNewCollectionBtn = () => {
+interface IAddNewCollectionBtn {
+  onCollectionChange: (collections: any) => void;
+}
+
+const AddNewCollectionBtn = (props: IAddNewCollectionBtn) => {
+  const { onCollectionChange } = props;
   const [showModal, setShowModal] = useState(false);
   const [formError, setFormError] = useState("");
 
@@ -23,6 +28,7 @@ const AddNewCollectionBtn = () => {
     const collection = {
       id: name.split(" ").join("-"),
       name: name,
+      createdAt: new Date(),
       firstChild: {}
     };
 
@@ -30,6 +36,7 @@ const AddNewCollectionBtn = () => {
     if (!collectionStorage) {
       const newCollection = [collection];
       localStorage.setItem("collections", JSON.stringify(newCollection));
+      onCollectionChange(newCollection);
       setShowModal(false);
       return;
     }
@@ -44,6 +51,7 @@ const AddNewCollectionBtn = () => {
     let newCollection: Array<any> = JSON.parse(String(oldCollection));
     newCollection.push(collection);
     localStorage.setItem("collections", JSON.stringify(newCollection));
+    onCollectionChange(newCollection);
     setShowModal(false);
     return;
   }
@@ -52,7 +60,7 @@ const AddNewCollectionBtn = () => {
     <div>
       <button
         type="button"
-        onClick={() => setShowModal(false)}
+        onClick={() => setShowModal(true)}
         className={css`
           background: linear-gradient(to bottom, #90dffe 0%,#38a3d1 100%); 
           padding: 0.5rem; 

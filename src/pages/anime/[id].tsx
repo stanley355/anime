@@ -18,7 +18,8 @@ const AnimePage = () => {
   return (
     <div className={css`min-height:100vh;`}>
       <div className={
-        css`background: linear-gradient(rgba(0,0,0, .5), rgba(0,0,0,.5)), url(${data?.Media.coverImage.extraLarge});
+        css`
+        background: linear-gradient(rgba(0,0,0, .5), rgba(0,0,0,.5)), url(${data?.Media.coverImage.extraLarge});
         background-repeat: no-repeat;
         background-size: cover;
         background-position: fixed;
