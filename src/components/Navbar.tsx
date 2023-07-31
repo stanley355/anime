@@ -12,7 +12,7 @@ const Navbar = () => {
       <Link to="/" className={css`font-size: 1.5rem;`}>
         <strong>N</strong>extAnime
       </Link>
-      <Link to="/collection">My Collection</Link>
+      <Link to="/collections">My Collection</Link>
     </div>
   )
 };

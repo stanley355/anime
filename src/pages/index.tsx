@@ -30,7 +30,7 @@ const Index = (props: any) => {
         <ApolloProvider client={aniListClient}>
           <div className={classNames(inter.className, css`background: url("anime_sky.jpg"); background-repeat: no-repeat; background-size: cover; padding: 0;`)}>
             <Routes>
-              <Route path="/collection/" element={<MyCollection />} />
+              <Route path="/collections" element={<MyCollection />} />
               <Route path="/anime/:id" element={<AnimePage />} />
               <Route path="/" element={<Home homeMediaData={homeMediaData} page={page} />} />
             </Routes>
