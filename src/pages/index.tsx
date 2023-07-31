@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import { Inter } from 'next/font/google';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { css } from '@emotion/css';
+import Navbar from '@/components/Navbar';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,21 +16,11 @@ const Index = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <BrowserRouter>
-        <div>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-          </ul>
-
-          <Routes>
-            <Route path="/about" element={<h1>About</h1>} />
-            <Route path="/" element={<h1>Home</h1>} />
-          </Routes>
-        </div>
+        <Navbar />
+        <Routes>
+          <Route path="/about" element={<h1>About</h1>} />
+          <Route path="/" element={<h1>Home</h1>} />
+        </Routes>
       </BrowserRouter>
     </>
   )
