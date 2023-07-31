@@ -20,7 +20,7 @@ const AddNewCollectionBtn = () => {
 
     const hasSpecialChar = name.match(/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/);
     if (hasSpecialChar) {
-      updateState("formError", "Collection Name can't include special characters");
+      updateState("formError", "Collection Name can't include special characters!");
       return;
     }
 
@@ -30,15 +30,22 @@ const AddNewCollectionBtn = () => {
       firstChild: {}
     };
 
-    const oldCollection = localStorage.getItem("collections");
-    if (!oldCollection) {
+    const collectionStorage = localStorage.getItem("collections");
+    if (!collectionStorage) {
       const newCollection = [collection];
       localStorage.setItem("collections", JSON.stringify(newCollection));
       updateState("showModal", false);
       return;
     }
 
-    let newCollection: Array<any> = structuredClone(JSON.parse(String(oldCollection)));
+    const oldCollection: Array<any> = JSON.parse(String(collectionStorage));
+    const collectionFilter = oldCollection.filter((col) => col.name === name);
+    if (collectionFilter.length > 0) {
+      updateState("formError", "You already have collection with the same name!");
+      return;
+    }
+
+    let newCollection: Array<any> = JSON.parse(String(oldCollection));
     newCollection.push(collection);
     localStorage.setItem("collections", JSON.stringify(newCollection));
     updateState("showModal", false);
