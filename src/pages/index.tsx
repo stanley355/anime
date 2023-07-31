@@ -10,6 +10,7 @@ import { aniListClient, fetchAniList } from '@/lib/fetchAniList';
 import { HOME_PAGE_QUERIES } from '@/lib/graphqlQueries';
 import AnimePage from './anime/[id]';
 import { ApolloProvider } from '@apollo/client';
+import MyCollection from './collection';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,6 +30,7 @@ const Index = (props: any) => {
         <ApolloProvider client={aniListClient}>
           <div className={classNames(inter.className, css`background: url("anime_sky.jpg"); background-repeat: no-repeat; background-size: cover; padding: 0;`)}>
             <Routes>
+              <Route path="/collection/" element={<MyCollection />} />
               <Route path="/anime/:id" element={<AnimePage />} />
               <Route path="/" element={<Home homeMediaData={homeMediaData} page={page} />} />
             </Routes>
