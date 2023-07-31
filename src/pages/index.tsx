@@ -5,10 +5,15 @@ import { css } from '@emotion/css';
 import Navbar from '@/components/Navbar';
 import Home from './home';
 import classNames from 'classnames';
+import { GetServerSideProps, GetServerSidePropsContext } from 'next';
+import { fetchAniList } from '@/lib/fetchAniList';
+import { HOME_PAGE_QUERIES } from '@/lib/graphqlQueries';
 
 const inter = Inter({ subsets: ['latin'] })
 
-const Index = () => {
+const Index = (props: any) => {
+  const { mediaData } = props;
+  console.log(mediaData);
   return (
     <>
       <Head>
@@ -37,3 +42,12 @@ const Index = () => {
 }
 
 export default Index;
+export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  const homePageData = await fetchAniList(HOME_PAGE_QUERIES);
+
+  return {
+    props: {
+      mediaData: homePageData?.data?.Page?.media ? homePageData.data?.Page?.media : []
+    }
+  }
+}

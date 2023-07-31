@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 
-const animateToVisibleKeyframes = css`@keyframes animateToVisible {
+export const animateToVisibleKeyframes = css`@keyframes animateToVisible {
   0% {
     opacity: 0;
   }
@@ -8,4 +8,3 @@ const animateToVisibleKeyframes = css`@keyframes animateToVisible {
     opacity: 1;
   }
 }`;
-export const animateToVisible = css`animation: animateToVisible 2s linear; ${animateToVisibleKeyframes}`;
