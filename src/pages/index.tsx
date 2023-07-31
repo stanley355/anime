@@ -12,7 +12,7 @@ import { HOME_PAGE_QUERIES } from '@/lib/graphqlQueries';
 const inter = Inter({ subsets: ['latin'] })
 
 const Index = (props: any) => {
-  const { homeMediaData } = props;
+  const { homeMediaData, page } = props;
 
   return (
     <>
@@ -33,8 +33,11 @@ const Index = (props: any) => {
           )} >
           <Routes>
             <Route path="/anime/:id" element={<h1>About</h1>} />
-            <Route path="/" element={<Home homeMediaData={homeMediaData} />} />
+            <Route path="/" element={<Home homeMediaData={homeMediaData} page={page}/>} />
           </Routes>
+        </div>
+        <div className={css`border-top: 1px solid white; display: flex; justify-content: center; padding: 1rem 0; margin-top: 1rem;`}>
+          Copyright {new Date().getFullYear()} @NextAnime
         </div>
       </BrowserRouter>
     </>
@@ -43,11 +46,16 @@ const Index = (props: any) => {
 
 export default Index;
 export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  const homePageData = await fetchAniList(HOME_PAGE_QUERIES);
+  const {query} = ctx;
+  const variables = {
+    page: query?.page ? query.page : 1
+  }
+  const homePageData = await fetchAniList(HOME_PAGE_QUERIES, variables);
 
   return {
     props: {
-      homeMediaData: homePageData?.data?.Page?.media ? homePageData.data?.Page?.media : []
+      homeMediaData: homePageData?.data?.Page?.media ? homePageData.data?.Page?.media : [],
+      page: query?.page ? query.page : 1
     }
   }
 }

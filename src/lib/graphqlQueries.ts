@@ -1,6 +1,6 @@
 export const HOME_PAGE_QUERIES = `
-  query GetHomeData {
-    Page(page: 1, perPage: 10) {
+  query GetHomeData($page: Int) {
+    Page(page: $page, perPage: 10) {
       media {
         id
         bannerImage

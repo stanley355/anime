@@ -21,7 +21,7 @@ const HomeAnimeList = (props: IHomeAnimeList) => {
   `}>
       {homeMediaData.length > 0 && homeMediaData.map((media: any) =>
         <div
-          key={media.title}
+          key={media.id}
           className={css`
           border: 1px solid white; 
           border-radius: 0.5rem; 
