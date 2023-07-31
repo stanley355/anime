@@ -1,26 +1,22 @@
-import React, { useReducer, useState } from 'react';
+import React, { useMemo, useReducer, useState } from 'react';
 import { css } from '@emotion/css';
 import { FaPlusCircle } from 'react-icons/fa';
 import { COLLECTIONS_STATES, collectionsReducer } from '@/lib/collectionsRedux';
 
 const AddNewCollectionBtn = () => {
-  const [states, dispatch] = useReducer(collectionsReducer, COLLECTIONS_STATES);
-  const { showModal, formError } = states;
-
-  const updateState = (name: string, value: any) => {
-    dispatch({ type: "UPDATE", name, value });
-  };
+  const [showModal, setShowModal] = useState(false);
+  const [formError, setFormError] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    updateState("formError", "");
+    setFormError("");
     const target = e.target as any;
     const name = target.name.value;
 
     const hasSpecialChar = name.match(/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/);
     if (hasSpecialChar) {
-      updateState("formError", "Collection Name can't include special characters!");
+      setFormError("Collection Name can't include special characters!");
       return;
     }
 
@@ -34,21 +30,21 @@ const AddNewCollectionBtn = () => {
     if (!collectionStorage) {
       const newCollection = [collection];
       localStorage.setItem("collections", JSON.stringify(newCollection));
-      updateState("showModal", false);
+      setShowModal(false);
       return;
     }
 
     const oldCollection: Array<any> = JSON.parse(String(collectionStorage));
     const collectionFilter = oldCollection.filter((col) => col.name === name);
     if (collectionFilter.length > 0) {
-      updateState("formError", "You already have collection with the same name!");
+      setFormError("You already have collection with the same name!");
       return;
     }
 
     let newCollection: Array<any> = JSON.parse(String(oldCollection));
     newCollection.push(collection);
     localStorage.setItem("collections", JSON.stringify(newCollection));
-    updateState("showModal", false);
+    setShowModal(false);
     return;
   }
 
@@ -56,7 +52,7 @@ const AddNewCollectionBtn = () => {
     <div>
       <button
         type="button"
-        onClick={() => updateState("showModal", true)}
+        onClick={() => setShowModal(false)}
         className={css`
           background: linear-gradient(to bottom, #90dffe 0%,#38a3d1 100%); 
           padding: 0.5rem; 
@@ -107,7 +103,7 @@ const AddNewCollectionBtn = () => {
             <button type="submit" className={css`width:100%; cursor: pointer; padding: 0.5rem; margin-top: 1rem; background: linear-gradient(to bottom, #90dffe 0%,#38a3d1 100%); border-radius: 0.25rem; font-size: 18px; font-weight: bold;`}>Let's Go</button>
             <button
               type="button"
-              onClick={() => updateState("showModal", false)}
+              onClick={() => setShowModal(false)}
               className={css`text-align: center; cursor:pointer; padding: 0.5rem; margin-top: 1rem; background: none; width: 100%; font-size:16px; border:none;`}>
               I'll add later
             </button>
