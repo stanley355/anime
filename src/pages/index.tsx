@@ -12,8 +12,8 @@ import { HOME_PAGE_QUERIES } from '@/lib/graphqlQueries';
 const inter = Inter({ subsets: ['latin'] })
 
 const Index = (props: any) => {
-  const { mediaData } = props;
-  console.log(mediaData);
+  const { homeMediaData } = props;
+
   return (
     <>
       <Head>
@@ -32,8 +32,8 @@ const Index = (props: any) => {
             }`
           )} >
           <Routes>
-            <Route path="/about" element={<h1>About</h1>} />
-            <Route path="/" element={<Home />} />
+            <Route path="/anime/:id" element={<h1>About</h1>} />
+            <Route path="/" element={<Home homeMediaData={homeMediaData} />} />
           </Routes>
         </div>
       </BrowserRouter>
@@ -47,7 +47,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSideP
 
   return {
     props: {
-      mediaData: homePageData?.data?.Page?.media ? homePageData.data?.Page?.media : []
+      homeMediaData: homePageData?.data?.Page?.media ? homePageData.data?.Page?.media : []
     }
   }
 }

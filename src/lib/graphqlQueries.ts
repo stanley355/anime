@@ -1,8 +1,14 @@
 export const HOME_PAGE_QUERIES = `
-  query GetHomeData { 
+  query GetHomeData {
     Page(page: 1, perPage: 10) {
       media {
         id
+        bannerImage
+        episodes
+        duration
+        genres
+        countryOfOrigin
+        sort: trending
         startDate {
           year
           month
@@ -13,17 +19,13 @@ export const HOME_PAGE_QUERIES = `
           month
           day
         }
-        episodes
-        duration
-        genres
         title {
-          romaji
-          english
           native
           userPreferred
         }
-        countryOfOrigin
-        sort: trending
+        coverImage {
+          large
+        }
       }
     }
   }
