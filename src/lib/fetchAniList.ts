@@ -1,17 +1,13 @@
-import {
-  ApolloClient,
-  InMemoryCache,
-  gql,
-} from "@apollo/client";
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+
+export const aniListClient = new ApolloClient({
+  uri: String(process.env.NEXT_PUBLIC_ANILIST_URL),
+  cache: new InMemoryCache(),
+});
 
 export const fetchAniList = async (query: string, variables?: any) => {
-  const client = new ApolloClient({
-    uri: String(process.env.NEXT_PUBLIC_ANILIST_URL),
-    cache: new InMemoryCache(),
-  });
-
   try {
-    const clientRes = client.query({
+    const clientRes = aniListClient.query({
       query: gql`${query}`,
       variables: variables,
     });

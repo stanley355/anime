@@ -5,14 +5,15 @@ import { css } from '@emotion/css';
 import Navbar from '@/components/Navbar';
 import Home from './home';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
-import { fetchAniList } from '@/lib/fetchAniList';
+import { aniListClient, fetchAniList } from '@/lib/fetchAniList';
 import { ANIME_PAGE_QUERIES, HOME_PAGE_QUERIES } from '@/lib/graphqlQueries';
 import AnimePage from './anime/[id]';
+import { ApolloProvider } from '@apollo/client';
 
 const inter = Inter({ subsets: ['latin'] })
 
 const Index = (props: any) => {
-  const { homeMediaData, page, animeMediaData } = props;
+  const { homeMediaData, page } = props;
 
   return (
     <>
@@ -24,12 +25,14 @@ const Index = (props: any) => {
       </Head>
       <BrowserRouter>
         <Navbar />
-        <div className={inter.className}>
-          <Routes>
-            <Route path="/anime/:id" element={<AnimePage/>} />
-            <Route path="/" element={<Home homeMediaData={homeMediaData} page={page} />} />
-          </Routes>
-        </div>
+        <ApolloProvider client={aniListClient}>
+          <div className={inter.className}>
+            <Routes>
+              <Route path="/anime/:id" element={<AnimePage />} />
+              <Route path="/" element={<Home homeMediaData={homeMediaData} page={page} />} />
+            </Routes>
+          </div>
+        </ApolloProvider>
         <div className={css`border-top: 1px solid white; display: flex; justify-content: center; padding: 1rem 0; margin-top: 1rem;`}>
           Copyright {new Date().getFullYear()} @NextAnime
         </div>
@@ -39,13 +42,13 @@ const Index = (props: any) => {
 }
 
 export default Index;
-export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSidePropsContext) => {  
+export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const { query } = ctx;
   const variables = {
     page: query?.page ? query.page : 1
   }
   const homePageData = await fetchAniList(HOME_PAGE_QUERIES, variables);
-  
+
   return {
     props: {
       homeMediaData: homePageData?.data?.Page?.media ? homePageData.data?.Page?.media : [],
