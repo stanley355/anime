@@ -3,18 +3,18 @@ export const HOME_PAGE_QUERIES = `
     Page(page: $page, perPage: 10) {
       media {
         id
-        bannerImage
         episodes
         duration
         genres
         countryOfOrigin
+        description
         averageScore
-        sort: trending
         title {
           native
           userPreferred
         }
         coverImage {
+          extraLarge
           large
         }
       }
