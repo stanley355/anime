@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { css } from '@emotion/css';
 import { ANIME_PAGE_QUERIES } from '@/lib/graphqlQueries';
 import { useParams } from 'react-router-dom';
@@ -6,40 +6,19 @@ import { gql, useQuery } from '@apollo/client';
 import LoadingPage from '../loading';
 import AddToCollectionBtn from '@/components/AddToCollectionBtn';
 import { Link } from 'react-router-dom';
+import { checkAnimeAdded } from '@/lib/checkAnimeAdded';
 
 
 const AnimePage = () => {
   const { id } = useParams();
   const graphqlQuery = gql`${ANIME_PAGE_QUERIES}`
   const { data, loading } = useQuery(graphqlQuery, { variables: { id: Number(id) } });
+  const [addedCollections, setAddedCollections] = useState(checkAnimeAdded(data?.Media.id));
 
-  // const addedToCollectionsList = useMemo(() => {
-  //   if (data?.Media.id) {
-  //     const collectionStorage = localStorage.getItem("collections");
-  //     const parsedColStorage = JSON.parse(String(collectionStorage));
-
-  //     const collection = parsedColStorage.filter((col: any) => {
-  //       const animeColStorage = localStorage.getItem(col.id);
-  //       const parsedAnimeCol = animeColStorage ? JSON.parse(String(animeColStorage)) : [];
-
-  //       if (parsedAnimeCol.length > 0) {
-  //         return parsedAnimeCol.filter((anime: any) => anime.id === data?.Media.id).length > 0;
-  //       }
-
-  //       return false;
-  //     });
-
-  //     return collection;
-  //   }
-
-  //   return [];
-  // }, [data, loading]);
-
+  console.log(addedCollections);
   if (loading) {
     return <LoadingPage />
   }
-
-
 
   return (
     <div className={css`min-height:100vh;`}>

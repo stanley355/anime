@@ -5,11 +5,13 @@ import CollectionModal from './CollectionModal';
 
 interface IAddNewCollectionBtn {
   anime: any;
+  onSuccess?: () => void;
 }
 
 const AddToCollectionBtn = (props: IAddNewCollectionBtn) => {
-  const { anime } = props;
+  const { anime, onSuccess } = props;
   const [showModal, setShowModal] = useState(false);
+  
   return (
     <div>
       <button
@@ -32,7 +34,7 @@ const AddToCollectionBtn = (props: IAddNewCollectionBtn) => {
         <span>Add to Collection</span>
       </button>
 
-      {showModal && <CollectionModal anime={anime} onCloseClick={() => setShowModal(false)} />}
+      {showModal && <CollectionModal anime={anime} onCloseClick={() => {setShowModal(false); onSuccess && onSuccess()}} />}
     </div>
   )
 };

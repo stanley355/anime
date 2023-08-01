@@ -95,7 +95,7 @@ const CollectionModal = (props: ICollectionModal) => {
           <div className={css`margin-bottom: 0.5rem; font-weight: bold; text-align:center;`}>To Which Collection would you like to add?</div>
           <div className={css`max-height:400px; margin-bottom: 0.5rem; overflow:auto;`}>
             {collections.map((col: any,) =>
-              <label htmlFor={col.id} className={css`display:flex; align-items:center; justify-content:space-between; border: 1px solid black; padding: 0.5rem; border-radius: 1rem; margin-bottom: 1rem;`}>
+              <label key={col.id} htmlFor={col.id} className={css`display:flex; align-items:center; justify-content:space-between; border: 1px solid black; padding: 0.5rem; border-radius: 1rem; margin-bottom: 1rem;`}>
                 <span>{col.name}</span>
                 <input type="checkbox" id={col.id} name={col.id} className={css`width: 1.5rem; height:1.5rem;`} onChange={handleOnChange} />
               </label>
