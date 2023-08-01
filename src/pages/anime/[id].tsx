@@ -15,7 +15,6 @@ const AnimePage = () => {
   const { data, loading } = useQuery(graphqlQuery, { variables: { id: Number(id) } });
   const [addedCollections, setAddedCollections] = useState(checkAnimeAdded(data?.Media.id));
 
-  console.log(addedCollections);
   if (loading) {
     return <LoadingPage />
   }
@@ -52,7 +51,7 @@ const AnimePage = () => {
       <div className={css`
         padding: 1rem;
         background: linear-gradient(rgba(0,0,0, .5), rgba(0,0,0,.5)), url("anime_sky.jpg");
-        height: 75vh;
+        min-height: 80vh;
         @media (min-width: 1024px) { 
           max-width: 1024px;
           margin: auto
@@ -73,7 +72,20 @@ const AnimePage = () => {
         <div dangerouslySetInnerHTML={{ __html: data?.Media.description }} />
 
         <div className={css`margin-top: 1rem;`}>
-          <AddToCollectionBtn anime={data?.Media} />
+          <AddToCollectionBtn anime={data?.Media} onSuccess={() => setAddedCollections(checkAnimeAdded(data?.Media.id))} />
+          {!addedCollections.length && <div className={css`margin-top: 0.5rem;`}>* You haven't added this Anime to your collection</div>}
+          {addedCollections.length > 0 && <div className={css`margin-top: 0.5rem;`}>
+            <div>Added To Following Collections: </div>
+            <ul className={css`margin-left: 1rem; margin-bottom: 0.5rem;`}>
+              {addedCollections.map((col: any) =>
+                <li className={css`margin-bottom: 0.5rem;`}>
+                  <Link to={`/collections/${col.id}`} className={css`&:hover {text-decoration: underline;}`}>
+                    {col.name}
+                  </Link>
+                </li>
+              )}
+            </ul>
+          </div>}
         </div>
       </div>
     </div>
