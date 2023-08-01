@@ -50,7 +50,7 @@ const AnimePage = () => {
       </div>
       <div className={css`
         padding: 1rem;
-        background: linear-gradient(rgba(0,0,0, .5), rgba(0,0,0,.5)), url("anime_sky.jpg");
+        background: linear-gradient(rgba(0,0,0, .6), rgba(0,0,0,.6));
         min-height: 80vh;
         @media (min-width: 1024px) { 
           max-width: 1024px;

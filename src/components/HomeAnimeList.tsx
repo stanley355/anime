@@ -28,7 +28,7 @@ const HomeAnimeList = (props: IHomeAnimeList) => {
           border-radius: 0.5rem; 
           padding: 0.5rem;
           margin-bottom: 1rem;
-          background: linear-gradient(rgba(0,0,0, .5), rgba(0,0,0,.5)), transparent;
+          background: linear-gradient(rgba(0,0,0, .6), rgba(0,0,0,.6)), transparent;
       `}>
           <div className={css`display:flex; gap: 1rem;`}>
             <Link to={`/anime/${media.id}`} className={css`height:100%; width: 30%;`}>
