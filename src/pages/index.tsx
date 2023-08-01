@@ -11,8 +11,9 @@ import AnimePage from './anime/[id]';
 import { ApolloProvider } from '@apollo/client';
 import MyCollection from './collection';
 import CollectionPage from './collection/[id]';
+import { createContext } from 'react';
 
-const inter = Inter({ subsets: ['cyrillic'] })
+const inter = Inter({ subsets: ['cyrillic'] });
 
 const Index = (props: any) => {
   const { homeMediaData, page } = props;

@@ -5,11 +5,12 @@ import { css } from '@emotion/css';
 interface IRenameCollectionBtn {
   collection: any;
   index: number;
+  dispatchCol: (col:any) => void;
   onCollectionChange: (col: Array<any>) => void;
 }
 
 const RenameCollectionBtn = (props: IRenameCollectionBtn) => {
-  const { collection, index, onCollectionChange } = props;
+  const { collection, index, onCollectionChange, dispatchCol } = props;
   const [showModal, setShowModal] = useState(false);
   const [formError, setFormError] = useState("");
 
@@ -49,6 +50,7 @@ const RenameCollectionBtn = (props: IRenameCollectionBtn) => {
 
     oldCollection.splice(index, 1, collection);
     localStorage.setItem("collections", JSON.stringify(oldCollection));
+    dispatchCol && dispatchCol(collection);
     onCollectionChange(oldCollection);
     setShowModal(false);
     return;
@@ -60,7 +62,7 @@ const RenameCollectionBtn = (props: IRenameCollectionBtn) => {
       <button
         onClick={() => setShowModal(true)}
         type="button"
-        className={css`display:flex; align-items:center; justify-content:center; gap:4px; width:100%; height:100%; border-radius: 0.25rem; border:none; cursor:pointer;`}
+        className={css`display:flex; align-items:center; justify-content:center; gap:4px; width:100%; height:100%; border-radius: 0.25rem; border:none; cursor:pointer; padding: 0.5rem;`}
       >
         <FaPen />
         <span>Edit</span>

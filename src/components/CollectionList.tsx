@@ -12,6 +12,14 @@ interface ICollectionList {
 
 const CollectionList = (props: ICollectionList) => {
   const { collections, onCollectionChange } = props;
+
+  const onChangeName = (oldCol: any, newCol: any) => {
+    const animeStorage = localStorage.getItem(String(oldCol.id));
+    const parsedAnimes = JSON.parse(String(animeStorage));
+    localStorage.removeItem(oldCol.id);
+    localStorage.setItem(newCol.id, JSON.stringify(parsedAnimes));
+  }
+
   return (
     <div className={css`
       margin-top:2rem;
@@ -65,7 +73,7 @@ const CollectionList = (props: ICollectionList) => {
                   <FaEye />
                   <span>View</span>
                 </Link>
-                <RenameCollectionBtn collection={col} index={index} onCollectionChange={onCollectionChange} />
+                <RenameCollectionBtn collection={col} index={index} dispatchCol={(newCol) => onChangeName(col, newCol)} onCollectionChange={onCollectionChange} />
                 <RemoveCollectionBtn collection={col} index={index} onCollectionChange={onCollectionChange} />
               </div>
             </div>
