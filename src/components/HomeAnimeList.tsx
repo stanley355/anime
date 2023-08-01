@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/css';
 import { Link } from 'react-router-dom';
+import AddToCollectionBtn from './AddToCollectionBtn';
 
 
 interface IHomeAnimeList {
@@ -50,15 +51,16 @@ const HomeAnimeList = (props: IHomeAnimeList) => {
                   {media.genres[0]}/{media.genres[1]}/{media.genres[2]}
                 </div>
               </Link>
-              <div className={css`display: grid; grid-template-columns: 50% 50%; gap: 0.25rem;`}>
+              <div className={css`display: grid; grid-template-columns: 50% 50%; gap: 0.25rem; margin-bottom: 1rem;`}>
                 <div>Eps: {media.episodes}</div>
                 <div>Dur: {media.duration}mins</div>
                 <div>Source: {media.countryOfOrigin}</div>
                 <div>Score: {media.averageScore}/100</div>
               </div>
-              <button type='button' className={css`width:100%; padding: 0.5rem; margin-top: 1rem; border-radius: 0.5rem;`}>
-                Add To Collection
-              </button>
+              <div className={css`width: fit-content; margin: 0 auto;`}>
+
+              <AddToCollectionBtn />
+              </div>
             </div>
           </div>
         </div>
