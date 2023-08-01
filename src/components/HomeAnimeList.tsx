@@ -58,8 +58,7 @@ const HomeAnimeList = (props: IHomeAnimeList) => {
                 <div>Score: {media.averageScore}/100</div>
               </div>
               <div className={css`width: fit-content; margin: 0 auto;`}>
-
-              <AddToCollectionBtn />
+              <AddToCollectionBtn anime={media} />
               </div>
             </div>
           </div>

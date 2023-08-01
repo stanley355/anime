@@ -3,8 +3,13 @@ import { css } from '@emotion/css';
 import { FaPlusCircle } from 'react-icons/fa';
 import CollectionModal from './CollectionModal';
 
-const AddToCollectionBtn = () => {
-  const [showModal, setShowModal]= useState(false);
+interface IAddNewCollectionBtn {
+  anime: any;
+}
+
+const AddToCollectionBtn = (props: IAddNewCollectionBtn) => {
+  const { anime } = props;
+  const [showModal, setShowModal] = useState(false);
   return (
     <div>
       <button
@@ -27,7 +32,7 @@ const AddToCollectionBtn = () => {
         <span>Add to Collection</span>
       </button>
 
-      {showModal && <CollectionModal anime={""} onCloseClick={()=> setShowModal(false)} /> }
+      {showModal && <CollectionModal anime={anime} onCloseClick={() => setShowModal(false)} />}
     </div>
   )
 };

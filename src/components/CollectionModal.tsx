@@ -10,7 +10,7 @@ interface ICollectionModal {
 }
 
 const CollectionModal = (props: ICollectionModal) => {
-  const {anime, onCloseClick} = props;
+  const { anime, onCloseClick } = props;
   const collectionStorage = localStorage.getItem("collections");
   const parsedCollections = collectionStorage ? JSON.parse(String(collectionStorage)) : [];
   const [collections, setCollections] = useState(parsedCollections);
@@ -42,7 +42,17 @@ const CollectionModal = (props: ICollectionModal) => {
         <button onClick={onCloseClick} className={css`position:absolute; top:0.5rem; right: 0.5rem; background:none; border:none; font-size: 24px; cursor: pointer;`}>
           <FaTimes />
         </button>
-        <div className={css`text-align:center; font-size: 20px; font-weight: bold; margin: 2rem;`}>Add Anime to Collection</div>
+        <div className={css`text-align:center; font-size: 20px; font-weight: bold; margin-top: 2rem; margin-bottom: 1rem;`}>Add Anime to Collection</div>
+        <div className={css`display:flex; align-items:center; gap:0.5rem; border: 1px solid black; border-radius: 0.25rem; margin-bottom: 1rem;`}>
+          <div className={css`width: 30%; height: 100px;`}>
+            <img src={anime.coverImage.large} alt={anime.title.native} width={400} height={400} className={css`width: 100%; height: 100%;`} />
+          </div>
+          <div >
+            <div>{anime.title.native}</div>
+            <div>{anime.title.userPreferred}</div>
+            <div className={css`font-size: 12px;`}>{anime.genres[0]}/{anime.genres[1]}</div>
+          </div>
+        </div>
         <div className={css`display: ${collections.length > 0 ? "none" : "block"}`}>
           <Image src="/empty_collection.png" alt="No Collection" width={400} height={400} className={css`width: 50%; margin: 0 25%; height: auto;`} />
           <div className={css`text-align:center; font-weight: bold;`}>You Have No Collection yet</div>
