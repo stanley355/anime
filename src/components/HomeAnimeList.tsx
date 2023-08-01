@@ -13,12 +13,12 @@ const HomeAnimeList = (props: IHomeAnimeList) => {
 
   return (
     <div className={css`
-    @media (min-width: 1024px) { 
-      display:grid;
-      grid-template-columns: 50% 50%;
-      gap: 1rem;
-    }
-  `}>
+      @media (min-width: 1024px) { 
+        display:grid;
+        grid-template-columns: 50% 50%;
+        gap: 1rem;
+      }`
+    }>
       {homeMediaData.length > 0 && homeMediaData.map((media: any) =>
         <div
           key={media.id}
@@ -27,7 +27,6 @@ const HomeAnimeList = (props: IHomeAnimeList) => {
           border-radius: 0.5rem; 
           padding: 0.5rem; 
           margin-bottom: 1rem;
-          background: linear-gradient(to bottom, #57c1eb 0%,#246fa8 100%);
           @media (min-width: 1024px) { 
             display:flex; 
             align-items:center;
