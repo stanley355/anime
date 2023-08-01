@@ -29,7 +29,6 @@ const AddNewCollectionBtn = (props: IAddNewCollectionBtn) => {
       id: name.split(" ").join("-"),
       name: name,
       createdAt: new Date(),
-      children: []
     };
 
     const collectionStorage = localStorage.getItem("collections");
