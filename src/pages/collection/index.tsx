@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import { css } from '@emotion/css';
-import Image from 'next/image';
 import AddNewCollectionBtn from '@/components/AddNewCollectionBtn';
 import PikaIsSad from '@/components/EmptyCollection';
-import { Link } from 'react-router-dom';
-import { FaEye, FaPen, FaTrash } from 'react-icons/fa';
-import RenameCollectionBtn from '@/components/RenameCollectionBtn';
-import RemoveCollectionBtn from '@/components/RemoveCollectionBtn';
 import CollectionList from '@/components/CollectionList';
 
 const MyCollection = () => {

@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { Inter } from 'next/font/google';
-import classNames from 'classnames';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { css } from '@emotion/css';
 import Navbar from '@/components/Navbar';
@@ -11,6 +10,7 @@ import { HOME_PAGE_QUERIES } from '@/lib/graphqlQueries';
 import AnimePage from './anime/[id]';
 import { ApolloProvider } from '@apollo/client';
 import MyCollection from './collection';
+import CollectionPage from './collection/[id]';
 
 const inter = Inter({ subsets: ['cyrillic'] })
 
@@ -30,6 +30,7 @@ const Index = (props: any) => {
           <ApolloProvider client={aniListClient}>
             <Navbar />
             <Routes>
+              <Route path="/collections/:id" element={<CollectionPage />} />
               <Route path="/collections" element={<MyCollection />} />
               <Route path="/anime/:id" element={<AnimePage />} />
               <Route path="/" element={<Home homeMediaData={homeMediaData} page={page} />} />

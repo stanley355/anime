@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import AddToCollectionBtn from './AddToCollectionBtn';
 
 
-interface IHomeAnimeList {
-  homeMediaData: any;
+interface IAnimePageList {
+  animes: any;
 }
 
-const HomeAnimeList = (props: IHomeAnimeList) => {
-  const { homeMediaData } = props;
+const AnimePageList = (props: IAnimePageList) => {
+  const { animes } = props;
 
   return (
     <div className={css`
@@ -19,7 +19,7 @@ const HomeAnimeList = (props: IHomeAnimeList) => {
         gap: 1rem;
       }`
     }>
-      {homeMediaData.length > 0 && homeMediaData.map((media: any) =>
+      {animes.length > 0 && animes.map((media: any) =>
         <div
           key={media.id}
           className={css`
@@ -57,7 +57,7 @@ const HomeAnimeList = (props: IHomeAnimeList) => {
                 <div>Score: {media.averageScore}/100</div>
               </div>
               <div className={css`width: fit-content; margin: 0 auto;`}>
-              <AddToCollectionBtn anime={media} />
+                <AddToCollectionBtn anime={media} />
               </div>
             </div>
           </div>
@@ -67,4 +67,4 @@ const HomeAnimeList = (props: IHomeAnimeList) => {
   )
 };
 
-export default HomeAnimeList;
+export default AnimePageList;
