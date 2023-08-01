@@ -12,7 +12,7 @@ import AnimePage from './anime/[id]';
 import { ApolloProvider } from '@apollo/client';
 import MyCollection from './collection';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['cyrillic'] })
 
 const Index = (props: any) => {
   const { homeMediaData, page } = props;
@@ -27,7 +27,15 @@ const Index = (props: any) => {
       </Head>
       <BrowserRouter>
         <ApolloProvider client={aniListClient}>
-          <div className={classNames(inter.className, css`background: url("wallpaper.png"); background-repeat: no-repeat; background-size: cover; padding: 0;`)}>
+          <div className={classNames(inter.className,
+            css`
+            background: url("wallpaper_mobile.jpg"); 
+            background-repeat: repeat-y; 
+            background-size: contain; 
+            @media (min-width: 1024px) { 
+              background-size:cover;
+            }`)
+          }>
             <Navbar />
             <Routes>
               <Route path="/collections" element={<MyCollection />} />
