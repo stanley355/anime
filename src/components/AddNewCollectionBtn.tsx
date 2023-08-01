@@ -57,7 +57,7 @@ const AddNewCollectionBtn = (props: IAddNewCollectionBtn) => {
   }
 
   return (
-    <div>
+    <div className={css`relative`}>
       <button
         type="button"
         onClick={() => setShowModal(true)}
@@ -102,7 +102,7 @@ const AddNewCollectionBtn = (props: IAddNewCollectionBtn) => {
             }
           `}>
           <div className={css`text-align:center; font-size: 28px; font-weight: bold; margin-bottom: 2rem;`}>Add New Collection</div>
-          <div className={css`text-align:center;`}>What&apos;s your Collection Name</div>
+          <div className={css`text-align:center;`}>New Collection Name</div>
           <form onSubmit={handleSubmit}>
             <label htmlFor="name">
               <input type="text" id='name' placeholder='Glorious Purpose' className={css`width: 100%; padding:0.5rem; font-size: 18px; border-radius: 0.25rem;`} />

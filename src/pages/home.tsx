@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { animateToVisibleKeyframes } from '@/lib/animationClasses';
 import HomeAnimeList from '@/components/HomeAnimeList';
 import classNames from 'classnames';
+import CollectionModal from '@/components/CollectionModal';
 
 interface IHome {
   page: number;
@@ -34,7 +35,7 @@ const Home = (props: IHome) => {
       </h1>
       <HomeAnimeList homeMediaData={homeMediaData} />
       <div className={css`text-align:center; margin-top: 1rem; font-size:20px; text-decoration: underline; color: black; font-weight: bold;`}>Pages</div>
-      <div className={css`display:flex; justify-content:center; gap:0.5rem; font-size:20px; margin-top: 0.5rem; color: black; font-weight: bold;`}>
+      <div className={css`display:flex; justify-content:center; gap:0.5rem; font-size:20px; margin-top: 0.5rem; color: black; font-weight: bold; margin-bottom: 2rem;`}>
         {homeMediaData.length > 0 && homeMediaData.map((media: any, index: number) =>
           <Link href={`?page=${index + 1}`} className={Number(page) === index + 1 ? css`${activePageClassname} padding: 0 0.5rem; border-radius: 0.25rem;` : css`padding: 0 0.5rem; border-radius: 0.25rem; &:hover {${activePageClassname} }`} key={index}>
             {index + 1}

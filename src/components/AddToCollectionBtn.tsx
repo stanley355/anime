@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { css } from '@emotion/css';
 import { FaPlusCircle } from 'react-icons/fa';
+import CollectionModal from './CollectionModal';
 
 const AddToCollectionBtn = () => {
+  const [showModal, setShowModal]= useState(false);
   return (
     <div>
       <button
         type="button"
-        // onClick={() => setShowModal(true)}
+        onClick={() => setShowModal(true)}
         className={css`
           background: linear-gradient(to bottom, #90dffe 0%,#38a3d1 100%); 
           padding: 0.5rem; 
@@ -24,6 +26,8 @@ const AddToCollectionBtn = () => {
         <FaPlusCircle />
         <span>Add to Collection</span>
       </button>
+
+      {showModal && <CollectionModal anime={""} onCloseClick={()=> setShowModal(false)} /> }
     </div>
   )
 };
