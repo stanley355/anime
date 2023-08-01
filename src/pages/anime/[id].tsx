@@ -73,12 +73,12 @@ const AnimePage = () => {
 
         <div className={css`margin-top: 1rem;`}>
           <AddToCollectionBtn anime={data?.Media} onSuccess={() => setAddedCollections(checkAnimeAdded(data?.Media.id))} />
-          {!addedCollections.length && <div className={css`margin-top: 0.5rem;`}>* You haven't added this Anime to your collection</div>}
+          {!addedCollections.length && <div className={css`margin-top: 0.5rem;`}>* You haven&apos;t added this Anime to your collection</div>}
           {addedCollections.length > 0 && <div className={css`margin-top: 0.5rem;`}>
             <div>Added To Following Collections: </div>
             <ul className={css`margin-left: 1rem; margin-bottom: 0.5rem;`}>
               {addedCollections.map((col: any) =>
-                <li className={css`margin-bottom: 0.5rem;`}>
+                <li className={css`margin-bottom: 0.5rem;`} key={col.id}>
                   <Link to={`/collections/${col.id}`} className={css`&:hover {text-decoration: underline;}`}>
                     {col.name}
                   </Link>
