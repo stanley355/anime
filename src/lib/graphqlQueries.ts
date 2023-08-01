@@ -8,6 +8,7 @@ export const HOME_PAGE_QUERIES = `
         duration
         genres
         countryOfOrigin
+        averageScore
         sort: trending
         startDate {
           year

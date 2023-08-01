@@ -15,7 +15,7 @@ const HomeAnimeList = (props: IHomeAnimeList) => {
     <div className={css`
       @media (min-width: 1024px) { 
         display:grid;
-        grid-template-columns: 50% 50%;
+        grid-template-columns: 49% 49%;
         gap: 1rem;
       }`
     }>
@@ -25,43 +25,38 @@ const HomeAnimeList = (props: IHomeAnimeList) => {
           className={css`
           border: 1px solid white; 
           border-radius: 0.5rem; 
-          padding: 0.5rem; 
+          padding: 0.5rem;
           margin-bottom: 1rem;
-          @media (min-width: 1024px) { 
-            display:flex; 
-            align-items:center;
-            gap: 1rem;
-          }
+          background: linear-gradient(rgba(0,0,0, .5), rgba(0,0,0,.5)), transparent;
       `}>
-          <div className={css`
-          @media (min-width: 1024px) { 
-            max-width: 25%;
-          }
-        `}>
-            <img src={media.coverImage.large} alt={media.title} width={400} height={400} className={css`width: 100%; height:auto; max-height:250px; border-radius: 0.5rem;`} />
-          </div>
-          <div className={css`
-            @media (min-width: 1024px) { 
-              display:flex;
-              flex-direction: column;
-              width: 100%;
-            }
-            `}>
-            <div>
-              <Link to={`/anime/${media.id}`} className={css`font-weight:600; display:flex; justify-content:center; text-align:center; font-size:20px; margin: 0.5rem 0; &:hover {text-decoration: underline;}`}>{media.title.native} - {media.title.userPreferred}</Link>
-              <div className={css`text-align:center; margin-bottom: 1rem;`}>{media.genres.map((genre: string, i: number) => `${genre}${i !== media.genres.length - 1 ? "," : ""}`)}</div>
-              <div className={css`display: grid; grid-template-columns: 50% 50%; gap: 0.5rem;`}>
-                <div>Episodes: {media.episodes}</div>
-                <div>Duration: {media.duration}mins</div>
-                <div>Country: {media.countryOfOrigin}</div>
-                <div>Start: {media.startDate.day}-{media.startDate.month}-{media.startDate.year}</div>
-              </div>
-            </div>
-            <div className={css`display: flex; align-items:center; gap: 1rem; margin-top: 1rem;`}>
-              <Link to={`/anime/${media.id}`} className={css`${cardCTAbaseCss} background: hotpink; color: black; `}>
-                Detail
+          <div className={css`display:flex; gap: 1rem;`}>
+            <Link to={`/anime/${media.id}`} className={css`height:100%; width: 30%;`}>
+              <img
+                src={media.coverImage.large}
+                alt={media.title}
+                width={400}
+                height={400}
+                className={css`width: 100px; height:175px; border-radius: 0.5rem;`} />
+            </Link>
+            <div className={css`margin: 0 auto; width:100%;`}>
+              <Link to={`/anime/${media.id}`}
+                className={css`
+                font-weight:600; 
+                text-align:center; 
+                font-size:18px; margin: 0.5rem 0; &:hover {text-decoration: underline;}`}>
+                <div>{media.title.native}</div>
+                <div>{media.title.userPreferred}</div>
+                <div className={css`text-align:center; margin-bottom: 1rem; font-weight:400; font-size:14px;`}>
+                  {media.genres[0]}/{media.genres[1]}/{media.genres[2]}
+                </div>
               </Link>
-              <button type='button' className={css`${cardCTAbaseCss} padding: 0.75rem 0;`}>
+              <div className={css`display: grid; grid-template-columns: 50% 50%; gap: 0.25rem;`}>
+                <div>Eps: {media.episodes}</div>
+                <div>Dur: {media.duration}mins</div>
+                <div>Source: {media.countryOfOrigin}</div>
+                <div>Score: {media.averageScore}/100</div>
+              </div>
+              <button type='button' className={css`width:100%; padding: 0.5rem; margin-top: 1rem; border-radius: 0.5rem;`}>
                 Add To Collection
               </button>
             </div>
