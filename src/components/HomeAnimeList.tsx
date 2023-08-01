@@ -51,7 +51,7 @@ const HomeAnimeList = (props: IHomeAnimeList) => {
                   {media.genres[0]}/{media.genres[1]}/{media.genres[2]}
                 </div>
               </Link>
-              <div className={css`display: grid; grid-template-columns: 50% 50%; gap: 0.25rem; margin-bottom: 1rem;`}>
+              <div className={css`display: grid; grid-template-columns: 50% 50%; gap: 0.25rem; margin-bottom: 1rem; place-items:center;`}>
                 <div>Eps: {media.episodes}</div>
                 <div>Dur: {media.duration}mins</div>
                 <div>Source: {media.countryOfOrigin}</div>
