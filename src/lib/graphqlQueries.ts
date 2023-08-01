@@ -10,16 +10,6 @@ export const HOME_PAGE_QUERIES = `
         countryOfOrigin
         averageScore
         sort: trending
-        startDate {
-          year
-          month
-          day
-        }
-        endDate {
-          year
-          month
-          day
-        }
         title {
           native
           userPreferred
@@ -36,7 +26,6 @@ export const ANIME_PAGE_QUERIES = `
   query GetAnimePageData($id: Int) {
     Media(id: $id) {
       id
-      bannerImage
       episodes
       duration
       genres
@@ -50,7 +39,6 @@ export const ANIME_PAGE_QUERIES = `
       coverImage {
         extraLarge
         large
-        color
       }
     }
   }
