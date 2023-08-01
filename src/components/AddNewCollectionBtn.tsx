@@ -108,7 +108,7 @@ const AddNewCollectionBtn = (props: IAddNewCollectionBtn) => {
               <input type="text" id='name' placeholder='Glorious Purpose' className={css`width: 100%; padding:0.5rem; font-size: 18px; border-radius: 0.25rem;`} />
             </label>
             <div className={css`color:red;`}>{formError}</div>
-            <button type="submit" className={css`width:100%; cursor: pointer; padding: 0.5rem; margin-top: 1rem; background: linear-gradient(to bottom, #90dffe 0%,#38a3d1 100%); border-radius: 0.25rem; font-size: 18px; font-weight: bold;`}>
+            <button type="submit" className={css`width:100%; cursor: pointer; border:1px solid black; padding: 0.5rem; margin-top: 1rem; background: linear-gradient(to bottom, #90dffe 0%,#38a3d1 100%); border-radius: 0.25rem; font-size: 18px; font-weight: bold;`}>
               Let&apos;s Go
               </button>
             <button

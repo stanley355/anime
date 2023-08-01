@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { css } from '@emotion/css';
 import Image from 'next/image';
 import AddNewCollectionBtn from '@/components/AddNewCollectionBtn';
-import PikaIsSad from '@/components/PikaIsSad';
+import PikaIsSad from '@/components/EmptyCollection';
 import { Link } from 'react-router-dom';
 import { FaEye, FaPen, FaTrash } from 'react-icons/fa';
 import RenameCollectionBtn from '@/components/RenameCollectionBtn';
@@ -17,16 +17,13 @@ const MyCollection = () => {
     <div className={css`
       min-height:100vh;
       padding: 0.5rem;
-      background: url("collection_bg.webp");
-      background-repeat: no-repeat;
-      background-size: cover;
+      background: linear-gradient(rgba(0,0,0, .5), rgba(0,0,0,.5)), transparent;
       @media (min-width: 1024px) { 
         max-width: 1024px;
         margin: auto
       }
     `}>
-      <h1 className={css`text-align: center; font-weight: 400;`}>My Collections</h1>
-      <h3 className={css`text-align: center; font-weight: 400;`}>What&apos;s on My List?</h3>
+      <h1 className={css`text-align: center; font-weight: 400; margin: 1rem 0;`}>My <strong>A</strong>nime Collections</h1>
       <AddNewCollectionBtn onCollectionChange={setCollections} />
       {collections.length === 0 && <PikaIsSad />}
       <div className={css`
