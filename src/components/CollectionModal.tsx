@@ -108,6 +108,7 @@ const CollectionModal = (props: ICollectionModal) => {
             border-radius: 0.25rem;
             border: 1px solid black;
             font-size: 16px;
+            cursor: pointer;
           `}>Submit</button>
         </form>
       </div>
