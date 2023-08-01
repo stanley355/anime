@@ -25,17 +25,9 @@ const Index = (props: any) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <BrowserRouter>
-        <ApolloProvider client={aniListClient}>
-          <div className={classNames(inter.className,
-            css`
-            background: url("wallpaper_mobile.jpg"); 
-            background-repeat: repeat-y; 
-            background-size: contain; 
-            @media (min-width: 1024px) { 
-              background-size:cover;
-            }`)
-          }>
+      <div className={inter.className}>
+        <BrowserRouter>
+          <ApolloProvider client={aniListClient}>
             <Navbar />
             <Routes>
               <Route path="/collections" element={<MyCollection />} />
@@ -45,9 +37,9 @@ const Index = (props: any) => {
             <div className={css`border-top: 1px solid white; display: flex; justify-content: center; padding: 1rem 0; color: black;`}>
               Copyright {new Date().getFullYear()} @NextAnime
             </div>
-          </div>
-        </ApolloProvider>
-      </BrowserRouter>
+          </ApolloProvider>
+        </BrowserRouter>
+      </div>
     </>
   )
 }
