@@ -20,7 +20,7 @@ const LoadingPage = () => {
           margin: 0 35%;
         }
       `} />
-      <div className={css`text-align:center; margin: 2rem 0; font-size: 24px; color:black; animation: animateToVisible 2s linear infinite; ${animateToVisibleKeyframes};`}>
+      <div className={css`text-align:center; margin: 2rem 0; font-size: 24px; animation: animateToVisible 2s linear infinite; ${animateToVisibleKeyframes};`}>
         Loading your Next Anime...
       </div>
     </div>

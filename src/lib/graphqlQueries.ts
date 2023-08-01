@@ -42,11 +42,7 @@ export const ANIME_PAGE_QUERIES = `
       genres
       countryOfOrigin
       description
-      startDate {
-        year
-        month
-        day
-      }
+      averageScore
       title {
         native
         userPreferred

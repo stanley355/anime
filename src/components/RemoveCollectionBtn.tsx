@@ -34,7 +34,7 @@ const RemoveCollectionBtn = (props: IRenameCollectionBtn) => {
         className={css`display:flex; align-items:center; justify-content:center; gap:4px; width:100%; height:100%; border-radius: 0.25rem; border:none; cursor:pointer; background:red; color:white;`}
       >
         <FaTrash />
-        <span>Edit</span>
+        <span>Remove</span>
       </button>
       <div className={css`
         display: ${showModal ? "block" : "none"};

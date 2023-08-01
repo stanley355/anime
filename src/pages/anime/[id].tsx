@@ -19,30 +19,35 @@ const AnimePage = () => {
     <div className={css`min-height:100vh;`}>
       <div className={
         css`
+        height:250px;
         background: linear-gradient(rgba(0,0,0, .5), rgba(0,0,0,.5)), url(${data?.Media.coverImage.extraLarge});
         background-repeat: no-repeat;
         background-size: cover;
         background-position: fixed;
+        @media (min-width: 1024px) { 
+          height: 400px;
+        }
         `}>
-        <div className={css`
-          width: 80%;
-          margin: 0 auto;
-          @media (min-width: 1024px) { 
-            width: fit-content;
-            margin: auto;
-            height:50%;
-          }
-        `}>
-          <img
-            src={data?.Media.coverImage.large}
-            alt={data?.Media.title}
-            width={400} height={400}
-            className={css`width: 100%;`} />
-        </div>
+        <img
+          src={data?.Media.coverImage.large}
+          alt={data?.Media.title}
+          width={400} height={400}
+          className={css`
+            width: 60%; 
+            height:250px; 
+            margin: 0 20%;
+            @media (min-width: 1024px) {
+              width: 30%;
+              height: 400px;
+              margin: 0 35%;
+            }
+          `}
+        />
       </div>
       <div className={css`
         padding: 1rem;
-        background: linear-gradient(rgba(0,0,0, .3), rgba(0,0,0,.3)), url("anime_sky.jpg");
+        background: linear-gradient(rgba(0,0,0, .5), rgba(0,0,0,.5)), url("anime_sky.jpg");
+        height: 75vh;
         @media (min-width: 1024px) { 
           max-width: 1024px;
           margin: auto
@@ -58,7 +63,7 @@ const AnimePage = () => {
           <div>Episodes: {data?.Media.episodes}</div>
           <div>Duration: {data?.Media.duration}mins</div>
           <div>Country: {data?.Media.countryOfOrigin}</div>
-          <div>Start: {data?.Media.startDate.day}-{data?.Media.startDate.month}-{data?.Media.startDate.year}</div>
+          <div>Score: {data?.Media.averageScore}/100</div>
         </div>
         <div dangerouslySetInnerHTML={{ __html: data?.Media.description }} />
 
