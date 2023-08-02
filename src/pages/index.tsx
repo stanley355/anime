@@ -36,8 +36,8 @@ const Index = (props: any) => {
               <Route path="/anime/:id" element={<AnimePage />} />
               <Route path="/" element={<Home homeMediaData={homeMediaData} page={page} />} />
             </Routes>
-            <div className={css`border-top: 1px solid white; display: flex; justify-content: center; padding: 1rem 0; color: black;`}>
-              Copyright {new Date().getFullYear()} @NextAnime
+            <div className={css`border-top: 1px solid white; display: flex; justify-content: center; padding: 1rem 0; color: black; font-weight: bold;`}>
+              Copyright {new Date().getFullYear()} winatastanley355@gmail.com
             </div>
           </ApolloProvider>
         </BrowserRouter>
