@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { css } from '@emotion/css';
 import { ANIME_PAGE_QUERIES } from '@/lib/graphqlQueries';
 import { useParams } from 'react-router-dom';
@@ -7,6 +7,7 @@ import LoadingPage from '../loading';
 import AddToCollectionBtn from '@/components/AddToCollectionBtn';
 import { Link } from 'react-router-dom';
 import { checkAnimeAdded } from '@/lib/checkAnimeAdded';
+import Image from 'next/image';
 
 
 const AnimePage = () => {
@@ -32,7 +33,7 @@ const AnimePage = () => {
           height: 400px;
         }
         `}>
-        <img
+        <Image
           src={data?.Media.coverImage.large}
           alt={data?.Media.title}
           width={400} height={400}

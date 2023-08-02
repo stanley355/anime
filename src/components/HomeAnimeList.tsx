@@ -3,6 +3,7 @@ import { css } from '@emotion/css';
 import { Link } from 'react-router-dom';
 import { FaPlus, FaPlusCircle } from 'react-icons/fa';
 import BulkCollectionModal from './BulkCollectionModal';
+import Image from 'next/image';
 
 
 interface IHomeAnimeList {
@@ -34,11 +35,11 @@ const HomeAnimeList = (props: IHomeAnimeList) => {
       `}>
             <div className={css`display:flex; gap: 0.5rem;`}>
               <Link to={`/anime/${media.id}`} className={css`height:100%; width: 30%;`}>
-                <img
+                <Image
                   src={media.coverImage.large}
                   alt={media.title}
-                  width={400}
-                  height={400}
+                  width={100}
+                  height={175}
                   className={css`width: 100px; height:175px; border-radius: 0.5rem;`} />
               </Link>
               <div className={css`margin: 0 auto; width:100%;`}>

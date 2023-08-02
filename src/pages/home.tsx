@@ -3,7 +3,6 @@ import { css } from '@emotion/css';
 import Link from 'next/link';
 import { animateToVisibleKeyframes } from '@/lib/animationClasses';
 import HomeAnimeList from '@/components/HomeAnimeList';
-import BulkCollectionModal from '@/components/BulkCollectionModal';
 
 interface IHome {
   page: number;
@@ -22,7 +21,6 @@ const Home = (props: IHome) => {
           margin: auto
         }`
     } >
-      {/* <BulkCollectionModal animeCollections={[]} onCloseClick={() =>{}} /> */}
       <h1 className={css`
         text-align: center; 
         margin: 2rem auto; 
