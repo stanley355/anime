@@ -3,8 +3,7 @@ import { css } from '@emotion/css';
 import Link from 'next/link';
 import { animateToVisibleKeyframes } from '@/lib/animationClasses';
 import HomeAnimeList from '@/components/HomeAnimeList';
-import classNames from 'classnames';
-import CollectionModal from '@/components/CollectionModal';
+import BulkCollectionModal from '@/components/BulkCollectionModal';
 
 interface IHome {
   page: number;
@@ -13,8 +12,6 @@ interface IHome {
 
 const Home = (props: IHome) => {
   const { homeMediaData, page } = props;
-
-  const activePageClassname = css`background: white; color: black;`;
 
   return (
     <div className={
@@ -25,6 +22,7 @@ const Home = (props: IHome) => {
           margin: auto
         }`
     } >
+      {/* <BulkCollectionModal animeCollections={[]} onCloseClick={() =>{}} /> */}
       <h1 className={css`
         text-align: center; 
         margin: 2rem auto; 
@@ -35,7 +33,6 @@ const Home = (props: IHome) => {
       </h1>
       <HomeAnimeList homeMediaData={homeMediaData} />
       <div className={css`background: white; padding: 0.25rem 0; border-radius: 0.25rem;`}>
-
         <div className={css`text-align:center; font-size:20px; text-decoration: underline; color: black; font-weight: bold;`}>Pages</div>
         <div className={css`display:flex; justify-content:center; gap:0.5rem; font-size:20px; margin-top: 0.5rem; color: black; font-weight: bold;`}>
           {homeMediaData.length > 0 && homeMediaData.map((media: any, index: number) =>
