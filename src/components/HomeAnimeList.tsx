@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { css } from '@emotion/css';
 import { Link } from 'react-router-dom';
-import AddToCollectionBtn from './AddToCollectionBtn';
-import { FaShoppingCart } from 'react-icons/fa';
-import CollectionCartBtn from './CollectionCartBtn';
+import { FaPlus, FaPlusCircle } from 'react-icons/fa';
+import BulkCollectionModal from './BulkCollectionModal';
 
 
 interface IHomeAnimeList {
@@ -12,10 +11,10 @@ interface IHomeAnimeList {
 
 const HomeAnimeList = (props: IHomeAnimeList) => {
   const { homeMediaData } = props;
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div>
-      <CollectionCartBtn />
       <div className={css`
       @media (min-width: 1024px) { 
         display:grid;
@@ -61,19 +60,23 @@ const HomeAnimeList = (props: IHomeAnimeList) => {
                   <div>Score: {media.averageScore}/100</div>
                 </div>
                 <div className={css`width: fit-content; margin: 0 auto;`}>
-                  <button type='button' className={css`
-                  padding: 0.5rem; 
-                  display: flex; 
-                  align-items:center; 
-                  gap:0.5rem; 
-                  font-size:16px; 
-                  background: linear-gradient(to bottom, #90dffe 0%,#38a3d1 100%);
-                  border-radius: 0.25rem;
-                  border:none;
-                  cursor:pointer;`
-                  }>
-                    <FaShoppingCart />
-                    Bulk Add to Collection
+                  <button type='button'
+                    onClick={() => setShowModal(true)}
+                    className={css`
+                      padding: 0.5rem; 
+                      display: flex; 
+                      align-items:center; 
+                      gap:0.5rem; 
+                      font-size:16px; 
+                      background: linear-gradient(to bottom, #90dffe 0%,#38a3d1 100%);
+                      border-radius: 0.25rem;
+                      border:none;
+                      cursor:pointer;`
+                    }>
+                    <FaPlusCircle className={css`margin-bottom: 0.15rem;`} />
+                    <span>
+                      Bulk Add to Collection
+                    </span>
                   </button>
                 </div>
               </div>
@@ -81,6 +84,7 @@ const HomeAnimeList = (props: IHomeAnimeList) => {
           </div>
         )}
       </div>
+      {showModal && <BulkCollectionModal animeCollections={homeMediaData} onCloseClick={() => setShowModal(false)} />}
     </div>
   )
 };

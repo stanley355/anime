@@ -29,20 +29,25 @@ const CollectionModal = (props: ICollectionModal) => {
     e.preventDefault();
 
     const filteredCheckedCol = checkedCollections.filter((col) => col !== "");
-    filteredCheckedCol.forEach((col) => {
-      const animeColStorage = localStorage.getItem(col);
-      let animeCol = animeColStorage ? JSON.parse(String(animeColStorage)) : [];
-      const hasAddedAnime = animeCol.filter((col: any) => col.id === anime.id).length > 0;
+    if (filteredCheckedCol.length > 0) {
+      filteredCheckedCol.forEach((col) => {
+        const animeColStorage = localStorage.getItem(col);
+        let animeCol = animeColStorage ? JSON.parse(String(animeColStorage)) : [];
+        const hasAddedAnime = animeCol.filter((col: any) => col.id === anime.id).length > 0;
 
-      if (!hasAddedAnime) {
-        animeCol.push(anime);
-        localStorage.setItem(col, JSON.stringify(animeCol));
-        return;
-      }
-    });
+        if (!hasAddedAnime) {
+          animeCol.push(anime);
+          localStorage.setItem(col, JSON.stringify(animeCol));
+          return;
+        }
+      });
 
-    alert("Anime Added to collections");
-    onCloseClick();
+      alert("Anime Added to collections");
+      onCloseClick();
+      return;
+    }
+
+    alert("Please Select a Collection");
     return;
   }
 
