@@ -1,0 +1,22 @@
+name: Deployment Pipeline
+
+on:
+  pust:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install
+        run: yarn
+
+      - name: Install
+        run: yarn test
+
+      - name: Build
+        run: yarn build
