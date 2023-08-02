@@ -14,11 +14,13 @@ const CollectionPage = () => {
   const [collection, setCollection] = useState(parsedCollections[0]);
   const animeStorage = localStorage.getItem(String(id));
   const parsedAnimes = animeStorage ? JSON.parse(String(animeStorage)) : [];
+  const [animeCollection, setAnimeCollection] = useState(parsedAnimes);
 
   const onChangeName = (col: any) => {
     localStorage.removeItem(collection.id);
     localStorage.setItem(col.id, JSON.stringify(parsedAnimes));
     setCollection(col);
+    setAnimeCollection(parsedAnimes);
   }
 
   return (
@@ -42,8 +44,8 @@ const CollectionPage = () => {
           dispatchCol={onChangeName}
           onCollectionChange={_ => { }} />
       </div>
-      {!parsedAnimes.length && <EmptyAnime />}
-      {parsedAnimes.length > 0 && <AnimePageList animes={parsedAnimes} />}
+      {!animeCollection.length && <EmptyAnime />}
+      {animeCollection.length > 0 && <AnimePageList animes={animeCollection} />}
     </div>
   )
 };
