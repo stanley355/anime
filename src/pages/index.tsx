@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { Inter } from 'next/font/google';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { css } from '@emotion/css';
 import Navbar from '@/components/Navbar';
@@ -11,9 +10,6 @@ import AnimePage from './anime/[id]';
 import { ApolloProvider } from '@apollo/client';
 import MyCollection from './collection';
 import CollectionPage from './collection/[id]';
-import { createContext } from 'react';
-
-const inter = Inter({ subsets: ['cyrillic'] });
 
 const Index = (props: any) => {
   const { homeMediaData, page } = props;
@@ -26,7 +22,7 @@ const Index = (props: any) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={inter.className}>
+      <div>
         <BrowserRouter>
           <ApolloProvider client={aniListClient}>
             <Navbar />
