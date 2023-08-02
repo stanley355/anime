@@ -19,7 +19,7 @@ const AnimePageList = (props: IAnimePageList) => {
         gap: 1rem;
       }`
     }>
-      {animes.length > 0 && animes.map((media: any) =>
+      {animes.map((media: any) =>
         <div
           key={media.id}
           className={css`

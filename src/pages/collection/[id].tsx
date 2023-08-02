@@ -5,6 +5,7 @@ import HomeAnimeList from '@/components/HomeAnimeList';
 import AnimePageList from '@/components/AnimePageList';
 import RenameCollectionBtn from '@/components/RenameCollectionBtn';
 import { FaArrowCircleLeft } from 'react-icons/fa';
+import EmptyAnime from '@/components/EmptyAnime';
 
 const CollectionPage = () => {
   const { id } = useParams();
@@ -12,7 +13,7 @@ const CollectionPage = () => {
   const parsedCollections = collectionStorage ? JSON.parse(String(collectionStorage)) : [];
   const [collection, setCollection] = useState(parsedCollections[0]);
   const animeStorage = localStorage.getItem(String(id));
-  const parsedAnimes = JSON.parse(String(animeStorage));
+  const parsedAnimes = animeStorage ? JSON.parse(String(animeStorage)) : [];
 
   const onChangeName = (col: any) => {
     localStorage.removeItem(collection.id);
@@ -41,7 +42,8 @@ const CollectionPage = () => {
           dispatchCol={onChangeName}
           onCollectionChange={_ => { }} />
       </div>
-      <AnimePageList animes={parsedAnimes} />
+      {!parsedAnimes.length && <EmptyAnime />}
+      {parsedAnimes.length > 0 && <AnimePageList animes={parsedAnimes} />}
     </div>
   )
 };
