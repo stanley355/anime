@@ -115,7 +115,7 @@ const BulkCollectionModal = (props: IBulkCollectionModal) => {
           <div className={css`margin-bottom: 1rem;`}>
             <div className={css`margin-bottom: 0.5rem; font-weight: bold; text-align:center;`}>Select Anime you want to Add</div>
             {animeCollections.map((anime) =>
-              <label htmlFor={anime.id} className={css`display:flex; align-items:center; gap:0.5rem; border: 1px solid black; border-radius: 0.25rem; margin-bottom: 0.5rem;`}>
+              <label key={anime.id} htmlFor={anime.id} className={css`display:flex; align-items:center; gap:0.5rem; border: 1px solid black; border-radius: 0.25rem; margin-bottom: 0.5rem;`}>
                 <div className={css`width: 20%; height: 50px;`}>
                   <img src={anime.coverImage.large} alt={anime.title.native} width={400} height={400} className={css`width: 100%; height: 100%;`} />
                 </div>
