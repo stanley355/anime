@@ -11,8 +11,10 @@ const CollectionPage = () => {
   const { id } = useParams();
   const collectionStorage = localStorage.getItem("collections");
   const parsedCollections = collectionStorage ? JSON.parse(String(collectionStorage)) : [];
-  const [collection, setCollection] = useState(parsedCollections[0]);
-  const animeStorage = localStorage.getItem(String(id));
+  const currentCollection = parsedCollections.filter((col: any) => col.id === id);
+  const [collection, setCollection] = useState(currentCollection[0]);
+
+  const animeStorage = localStorage.getItem(String(collection?.id));
   const parsedAnimes = animeStorage ? JSON.parse(String(animeStorage)) : [];
   const [animeCollection, setAnimeCollection] = useState(parsedAnimes);
 
@@ -21,6 +23,15 @@ const CollectionPage = () => {
     localStorage.setItem(col.id, JSON.stringify(parsedAnimes));
     setCollection(col);
     setAnimeCollection(parsedAnimes);
+    return;
+  }
+
+  const onRemoveClick = (index:number) => {
+    let newAnimeCol = animeCollection;
+    newAnimeCol.splice(index,1);
+    localStorage.setItem(collection.id, JSON.stringify(newAnimeCol));
+    setAnimeCollection([...newAnimeCol]);
+    return;
   }
 
   return (
@@ -37,15 +48,16 @@ const CollectionPage = () => {
         <button type="button" className={css`background: none; color: white; border: none; font-size: 28px; cursor: pointer;`} onClick={() => history.back()}>
           <FaArrowCircleLeft />
         </button>
-        <div className={css`text-align: center; font-weight: bold; margin: 2rem 0; font-size:28px;`}>{collection.name}</div>
-        <RenameCollectionBtn
+        <div className={css`text-align: center; font-weight: bold; margin: 2rem 0; font-size:28px;`}>{collection?.name}</div>
+        {collection && <RenameCollectionBtn
           collection={collection}
           index={Number(id)}
           dispatchCol={onChangeName}
-          onCollectionChange={_ => { }} />
+          onCollectionChange={_ => { }}
+        />}
       </div>
       {!animeCollection.length && <EmptyAnime />}
-      {animeCollection.length > 0 && <AnimePageList animes={animeCollection} />}
+      {animeCollection.length > 0 && <AnimePageList animes={animeCollection} onRemoveClick={onRemoveClick} />}
     </div>
   )
 };
