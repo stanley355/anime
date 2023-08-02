@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 export const aniListClient = new ApolloClient({
-  uri: String(process.env.NEXT_PUBLIC_ANILIST_URL),
+  uri: "https://graphql.anilist.co",
   cache: new InMemoryCache(),
 });
 
