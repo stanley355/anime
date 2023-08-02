@@ -21,7 +21,7 @@ const AnimePageList = (props: IAnimePageList) => {
         gap: 1rem;
       }`
     }>
-      {/* {animes.map((media: any, index:number) =>
+      {animes.map((media: any, index:number) =>
         <div
           key={media.id}
           className={css`
@@ -34,7 +34,7 @@ const AnimePageList = (props: IAnimePageList) => {
           <div className={css`display:flex; gap: 1rem;`}>
             <Link to={`/anime/${media.id}`} className={css`height:100%; width: 30%;`}>
               <img
-                // src={media?.coverImage?.large ? media.coverImage.large : media.coverImage.extraLarge}
+                src={media?.coverImage?.large}
                 alt={media.title}
                 width={400}
                 height={400}
@@ -64,7 +64,7 @@ const AnimePageList = (props: IAnimePageList) => {
             </div>
           </div>
         </div>
-      )} */}
+      )}
     </div>
   )
 };

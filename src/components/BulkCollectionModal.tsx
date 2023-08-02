@@ -89,8 +89,8 @@ const BulkCollectionModal = (props: IBulkCollectionModal) => {
         className={css`
             background:white; 
             width:95%; 
-            height:92%; 
-            margin: 15% auto; 
+            height:95%; 
+            margin: 5% auto; 
             border-radius: 0.25rem; 
             color: black; 
             padding: 1rem;
