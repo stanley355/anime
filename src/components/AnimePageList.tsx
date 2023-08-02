@@ -2,14 +2,16 @@ import React from 'react';
 import { css } from '@emotion/css';
 import { Link } from 'react-router-dom';
 import AddToCollectionBtn from './AddToCollectionBtn';
+import RemoveAnimeBtn from './RemoveAnimeBtn';
 
 
 interface IAnimePageList {
   animes: any;
+  onRemoveClick: (index:number) => void;
 }
 
 const AnimePageList = (props: IAnimePageList) => {
-  const { animes } = props;
+  const { animes, onRemoveClick } = props;
 
   return (
     <div className={css`
@@ -19,7 +21,7 @@ const AnimePageList = (props: IAnimePageList) => {
         gap: 1rem;
       }`
     }>
-      {animes.map((media: any) =>
+      {animes.map((media: any, index:number) =>
         <div
           key={media.id}
           className={css`
@@ -56,8 +58,8 @@ const AnimePageList = (props: IAnimePageList) => {
                 <div>Source: {media.countryOfOrigin}</div>
                 <div>Score: {media.averageScore}/100</div>
               </div>
-              <div className={css`width: fit-content; margin: 0 auto;`}>
-                <AddToCollectionBtn anime={media} />
+              <div className={css`width: fit-content; margin-left: auto;`}>
+                <RemoveAnimeBtn anime={media} onRemoveClick={() => onRemoveClick(index)} />
               </div>
             </div>
           </div>
